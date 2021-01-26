@@ -11,6 +11,29 @@
 // as a template, deleting it when you're finished.
 
 // 🔥 define your renderProduct function here
+let renderProduct = function(products){
+  for (let i = 0; i < products.length; i++) { 
+
+    let outputElement = document.querySelector('.products')
+    outputElement.insertAdjacentHTML('beforeend', ` 
+      <div class="p-4 w-full md:w-1/2 lg:w-1/3">
+      <div class="border h-full p-4 flex flex-col">
+        <h2 class="text-lg font-bold mb-4">${products[i].name}</h2>
+        <div class="mb-4"><img src="${products[i].image}">
+        </div>
+        <div class="mb-4 text-gray-900">
+        ${products[i].description}
+        </div>
+        <div class="mt-auto text-purple-500 text-2xl">${products[i].price}</div>
+      </div>
+    </div>
+    `)
+    // console.log(`remember to buy ${burger[i]}`) 
+  }
+
+}
+
+
 
 async function pageLoaded() {
   let response = await fetch('https://kiei451.com/api/products.json')
@@ -23,6 +46,9 @@ async function pageLoaded() {
   // iteration of the loop should call your renderProduct function
   // make it work first; then extract to the separate renderProduct
   // function after it's 100% working without it
+  renderProduct(json.products)
+
+
   
 }
 
